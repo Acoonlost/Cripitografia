@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encrypt/Decrypt Messages</title>
+    <style>
+        body {
+            background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.fiscalti.com.br%2Fwp-content%2Fuploads%2F2019%2F05%2F289138-criptografia-o-que-e-e-por-que-utilizala-2-768x432.jpg&f=1&nofb=1&ipt=ce8774ed3b95e750dc73a6758bb3a4566f3fb300271b32b768139ee1a0e9850b&ipo=images");
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        form {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form id="cryptoForm">
+        <label for="opcao">Escolha uma opção:</label>
+        <select id="opcao" name="opcao">
+            <option value="1">Criptografar mensagem</option>
+            <option value="2">Descriptografar mensagem</option>
+        </select>
+        <br>
+
+        <label for="mensagem_original">Digite a mensagem:</label>
+        <textarea id="mensagem_original" name="mensagem_original" rows="4" cols="50"></textarea>
+        <br>
+
+        <label for="mensagem_criptografada">Resultado:</label>
+        <textarea id="mensagem_criptografada" name="mensagem_criptografada" rows="4" cols="50" readonly></textarea>
+        <br>
+
+        <button type="button" onclick="processar()">Enviar</button>
+
+        <script>
+            function processar() {
+                var opcao = document.getElementById("opcao").value;
+                var mensagemOriginal = document.getElementById("mensagem_original").value;
+
+                if (opcao === "1") {
+                    var mensagemCriptografada = btoa(mensagemOriginal);
+                    document.getElementById("mensagem_criptografada").value = mensagemCriptografada;
+                } else if (opcao === "2") {
+                    var mensagemDescriptografada = atob(mensagemOriginal);
+                    document.getElementById("mensagem_criptografada").value = mensagemDescriptografada;
+                }
+            }
+        </script>
+    </form>
+</body>
+</html>
